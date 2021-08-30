@@ -14,6 +14,14 @@ const loadData = async cityName => {
 }
 loadData('dhaka');
 
+const getCountryName = async code => {
+    const url = `https://restcountries.eu/rest/v2/alpha/${code}`;
+    const response = await fetch(url);
+    const data = await response.json();
+    console.log(data);
+    return data.name;
+}
+
 const processData = infos => {
 
     try {
@@ -21,10 +29,13 @@ const processData = infos => {
         const city = document.getElementById('city-name');
         const tempCelcius = document.getElementById('temp-celcius-value');
         const feelings = document.getElementById('weather-feelings');
+        const countryCode = infos.sys.country;
         const iconID = infos.weather[0].icon;
+        const countryName = getCountryName(countryCode);
+        console.log(countryName);
 
         weatherIcon.src = `https://openweathermap.org/img/wn/${iconID}@2x.png`;
-        city.innerText = infos.name;
+        city.innerText = infos.name + ', ' + countryName;
         tempCelcius.innerText = infos.main.temp + '° C';
         feelings.innerText = infos.weather[0].main;
     } catch (error) {
