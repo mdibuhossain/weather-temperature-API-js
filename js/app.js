@@ -2,10 +2,13 @@
 const API = 'aa3d648dd1d55d5a05313a802c523171';
 
 // get city name from user
-const getCity = () => {
+const getCity = document.getElementById('search-city');
+getCity.addEventListener('click', (e) => {
+    e.preventDefault();
     const cityName = document.getElementById('search-field');
     loadData(cityName.value);
-}
+    cityName.value = '';
+})
 
 // load data from openweathermap API
 const loadData = async cityName => {
