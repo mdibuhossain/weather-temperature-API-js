@@ -36,6 +36,7 @@ const processData = async infos => {
     try {
         const weatherIcon = document.getElementById('weather-icon');
         const city = document.getElementById('city-name');
+        const countryNameContainer = document.getElementById('country-name');
         const tempCelcius = document.getElementById('temp-celcius-value');
         const feelings = document.getElementById('weather-feelings');
         const countryCode = infos.sys.country;
@@ -44,7 +45,8 @@ const processData = async infos => {
         console.log(countryName);
 
         weatherIcon.src = `https://openweathermap.org/img/wn/${iconID}@2x.png`;
-        city.innerText = infos.name + ', ' + countryName;
+        city.innerText = infos.name;
+        countryNameContainer.innerText = countryName;
         tempCelcius.innerText = infos.main.temp + '° C';
         feelings.innerText = infos.weather[0].main;
     } catch (error) {
