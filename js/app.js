@@ -1,10 +1,13 @@
+// API key
 const API = 'aa3d648dd1d55d5a05313a802c523171';
 
+// get city name from user
 const getCity = () => {
     const cityName = document.getElementById('search-field');
     loadData(cityName.value);
 }
 
+// load data from openweathermap API
 const loadData = async cityName => {
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&appid=${API}`;
     const response = await fetch(url);
@@ -12,8 +15,11 @@ const loadData = async cityName => {
     console.log(data);
     processData(data);
 }
+
+// default API
 loadData('dhaka');
 
+// get country name from restcoutries API
 const getCountryName = async code => {
     const url = `https://restcountries.eu/rest/v2/alpha/${code}`;
     const response = await fetch(url);
@@ -22,8 +28,8 @@ const getCountryName = async code => {
     return data.name;
 }
 
+// process loaded data
 const processData = infos => {
-
     try {
         const weatherIcon = document.getElementById('weather-icon');
         const city = document.getElementById('city-name');
@@ -41,5 +47,4 @@ const processData = infos => {
     } catch (error) {
         alert(infos.message);
     }
-
 }
