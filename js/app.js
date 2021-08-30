@@ -32,7 +32,7 @@ const getCountryName = async code => {
 }
 
 // process loaded data
-const processData = infos => {
+const processData = async infos => {
     try {
         const weatherIcon = document.getElementById('weather-icon');
         const city = document.getElementById('city-name');
@@ -40,7 +40,7 @@ const processData = infos => {
         const feelings = document.getElementById('weather-feelings');
         const countryCode = infos.sys.country;
         const iconID = infos.weather[0].icon;
-        const countryName = getCountryName(countryCode);
+        const countryName = await getCountryName(countryCode);
         console.log(countryName);
 
         weatherIcon.src = `https://openweathermap.org/img/wn/${iconID}@2x.png`;
