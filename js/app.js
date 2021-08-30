@@ -18,7 +18,7 @@ const getCountryName = async code => {
     const url = `https://restcountries.eu/rest/v2/alpha/${code}`;
     const response = await fetch(url);
     const data = await response.json();
-    console.log(data);
+    console.log(data.name);
     return data.name;
 }
 
