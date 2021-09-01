@@ -1,11 +1,15 @@
+body{
+    position: relative;
+}
 .bg-blur{
+    position: relative;
     height: 100vh;
     width: 100vw;
     background: url('../img/wallpaper.jpg') no-repeat;
     background-size: cover;
     background-position: center;
     filter: blur(8px);
-    z-index: -1;
+    z-index: -10;
 }
 .myContainer{
     background-color: rgba(0, 0, 0, 0.274);
@@ -20,4 +24,11 @@
 }
 #country-name{
     letter-spacing: 1px;
+}
+.refresh-icon{
+    position: absolute;
+    width: 20px;
+    height: auto;
+    right: 20px;
+    bottom: 20px;
 }

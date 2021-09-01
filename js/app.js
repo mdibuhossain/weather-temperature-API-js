@@ -1,11 +1,18 @@
 // API key
 const API = 'aa3d648dd1d55d5a05313a802c523171';
 
+// refresh data
+let cityNameTmp = 'dhaka';
+function refreshData(){
+    loadData(cityNameTmp);
+}
+
 // get city name from user
 const getCity = document.getElementById('search-city');
 getCity.addEventListener('click', (e) => {
     e.preventDefault();
     const cityName = document.getElementById('search-field');
+    cityNameTmp = cityName.value;
     loadData(cityName.value);
     cityName.value = '';
 })
@@ -19,8 +26,8 @@ const loadData = async cityName => {
     processData(data);
 }
 
-// default API
-loadData('dhaka');
+// default City
+loadData(cityNameTmp);
 
 // get country name from restcoutries API
 const getCountryName = async code => {
