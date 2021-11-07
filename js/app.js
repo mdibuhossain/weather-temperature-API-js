@@ -46,9 +46,10 @@ const processData = async infos => {
         const countryNameContainer = document.getElementById('country-name');
         const tempCelcius = document.getElementById('temp-celcius-value');
         const feelings = document.getElementById('weather-feelings');
-        const countryCode = infos.sys.country;
+        const countryName = infos.sys.country;
+        // const countryCode = infos.sys.country;
         const iconID = infos.weather[0].icon;
-        const countryName = await getCountryName(countryCode);
+        // const countryName = await getCountryName(countryCode);
         console.log(countryName);
 
         weatherIcon.src = `https://openweathermap.org/img/wn/${iconID}@2x.png`;
